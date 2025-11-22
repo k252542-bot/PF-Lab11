@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <string.h>
+
+void reverseRec(char str[], int i) {
+    if (i < 0) return;
+
+    printf("%c", str[i]);
+    reverseRec(str, i - 1);
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    fgets(str,sizeof(str),stdin);
+
+    reverseRec(str, strlen(str) - 1);
+    return 0;
+}
