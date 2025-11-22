@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void processPackage(int size) {
+    if (size <= 0) return;
+
+    for (int i = 0; i < size; i++) {
+        processPackage(size - 1);
+        processPackage(size - 1);
+        processPackage(size - 1);
+        printf("%d ", size - 1);
+    }
+
+    printf("%d ", size);
+}
+
+int main() {
+    int size;
+    printf("Enter initial package size: ");
+    scanf("%d", &size);
+
+    processPackage(size);
+
+    return 0;
+}
