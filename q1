@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+void replaceRec(char str[], int i) {
+    if (str[i] == '\0') return;
+
+    if (str[i] == 'a') str[i] = 'x';
+    else if (str[i] == 'x') str[i] = 'a';
+
+    replaceRec(str, i + 1);
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    gets(str);
+
+    replaceRec(str, 0);
+
+    printf("Modified string: %s", str);
+    return 0;
+}
