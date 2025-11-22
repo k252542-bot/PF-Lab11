@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Address {
+    int houseNo;
+    char city[30];
+    char state[30];
+};
+
+struct Employee {
+    char name[30];
+    int id;
+    float salary;
+    struct Address *addr;
+};
+
+int main() {
+    struct Employee emp[5];
+
+    for (int i = 0; i < 5; i++) {
+        emp[i].addr = (struct Address*)malloc(sizeof(struct Address));
+
+        printf("\nEnter details for employee %d\n", i + 1);
+        printf("Name: ");
+        scanf("%s", emp[i].name);
+
+        printf("ID: ");
+        scanf("%d", &emp[i].id);
+
+        printf("Salary: ");
+        scanf("%f", &emp[i].salary);
+
+        printf("House No: ");
+        scanf("%d", &emp[i].addr->houseNo);
+
+        printf("City: ");
+        scanf("%s", emp[i].addr->city);
+
+        printf("State: ");
+        scanf("%s", emp[i].addr->state);
+    }
+
+    printf("\n--- Employee Details ---\n");
+    for (int i = 0; i < 5; i++) {
+        printf("\nEmployee %d\n", i + 1);
+        printf("Name: %s\n", emp[i].name);
+        printf("ID: %d\n", emp[i].id);
+        printf("Salary: %.2f\n", emp[i].salary);
+        printf("Address: %d, %s, %s\n",
+               emp[i].addr->houseNo,
+               emp[i].addr->city,
+               emp[i].addr->state);
+    }
+
+    return 0;
+}
